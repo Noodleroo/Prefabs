@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://351gbhexqtql"]
+
+[ext_resource type="Script" uid="uid://b3m3fj8et6375" path="res://SteamTest/MainMenu.gd" id="1_06t4h"]
+
+[node name="MainMenu" type="Control" unique_id=1215654881 node_paths=PackedStringArray("server_browser_container", "lobby_list_vbox", "server_name_input")]
+z_index = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_06t4h")
+server_browser_container = NodePath("SeverBrowserContainer")
+lobby_list_vbox = NodePath("SeverBrowserContainer/LobbyListVBox")
+server_name_input = NodePath("PanelContainer/MenuOptions/HostButton/SeverNameInput")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1470582670]
+texture_filter = 1
+propagate_maximum_size = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -49.0
+offset_right = 49.0
+offset_bottom = 70.0
+grow_horizontal = 2
+
+[node name="MenuOptions" type="VBoxContainer" parent="PanelContainer" unique_id=1408663777]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 2
+
+[node name="HostButton" type="Button" parent="PanelContainer/MenuOptions" unique_id=745440866]
+texture_filter = 1
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "Host Game"
+
+[node name="SeverNameInput" type="LineEdit" parent="PanelContainer/MenuOptions/HostButton" unique_id=96773019]
+layout_mode = 0
+offset_left = 117.0
+offset_top = 3.0
+offset_right = 185.5
+offset_bottom = 29.0
+theme_override_font_sizes/font_size = 13
+placeholder_text = "Test"
+alignment = 1
+
+[node name="JoinButton" type="Button" parent="PanelContainer/MenuOptions" unique_id=1609349593]
+texture_filter = 1
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "Join Existing Game
+"
+
+[node name="BackButton" type="Button" parent="PanelContainer/MenuOptions" unique_id=2005437054]
+texture_filter = 1
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "Leave Server"
+
+[node name="QuitButton" type="Button" parent="." unique_id=497942302]
+texture_filter = 1
+layout_mode = 0
+offset_top = 145.0
+offset_right = 46.5
+offset_bottom = 180.0
+theme_override_font_sizes/font_size = 10
+text = "Quit"
+
+[node name="SeverBrowserContainer" type="ScrollContainer" parent="." unique_id=795444684]
+layout_mode = 0
+offset_right = 87.0
+offset_bottom = 114.0
+horizontal_scroll_mode = 0
+
+[node name="LobbyListVBox" type="VBoxContainer" parent="SeverBrowserContainer" unique_id=1676528143]
+layout_mode = 2

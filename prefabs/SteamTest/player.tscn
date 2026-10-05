@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://b8xip7dmwacyu"]
+
+[ext_resource type="Script" uid="uid://duvy5d2lm5ih5" path="res://SteamTest/VBasic2d.gd" id="1_8vm6x"]
+[ext_resource type="Texture2D" uid="uid://ro5q3bc7n18e" path="res://SteamTest/quadle_colorless.png" id="2_8mg1p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fa6ko"]
+size = Vector2(16, 16)
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_s1l1p"]
+properties/0/path = NodePath("Sprite2D:modulate")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=703488980]
+z_index = -1
+script = ExtResource("1_8vm6x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1507557186]
+shape = SubResource("RectangleShape2D_fa6ko")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1391138466]
+texture_filter = 1
+texture = ExtResource("2_8mg1p")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=786540829]
+replication_config = SubResource("SceneReplicationConfig_s1l1p")

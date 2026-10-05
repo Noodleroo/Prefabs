@@ -1,0 +1,133 @@
+[gd_scene format=4 uid="uid://bhgo7r1a2ci55"]
+
+[ext_resource type="Script" uid="uid://ccvi73mkg4j46" path="res://SteamTest/SeverManager.gd" id="1_mkt6s"]
+[ext_resource type="Texture2D" uid="uid://bxbuee4vvuvge" path="res://SteamTest/ground_tile_sheet.png" id="2_ro8my"]
+[ext_resource type="Script" uid="uid://duvy5d2lm5ih5" path="res://SteamTest/VBasic2d.gd" id="3_ro8my"]
+[ext_resource type="Texture2D" uid="uid://chg5m3o5drp3" path="res://SteamTest/quadle.png" id="4_5jwfy"]
+[ext_resource type="Script" uid="uid://vq4vwioygom6" path="res://SteamTest/SummoningStone.gd" id="4_7q648"]
+[ext_resource type="Texture2D" uid="uid://drhwq0ilgx3j7" path="res://SteamTest/stone.png" id="4_wgsh4"]
+[ext_resource type="Texture2D" uid="uid://bsx31ym0fhto5" path="res://SteamTest/steam.png" id="6_7q648"]
+[ext_resource type="Script" uid="uid://cxh57rlrwft8u" path="res://SteamTest/Ready.gd" id="6_fjxc5"]
+[ext_resource type="Script" uid="uid://04yhsfopbrap" path="res://SteamTest/Host.gd" id="9_c5i0c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fa6ko"]
+size = Vector2(16, 16)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_otyn0"]
+texture = ExtResource("2_ro8my")
+0:0/0 = 0
+1:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_fa6ko"]
+sources/0 = SubResource("TileSetAtlasSource_otyn0")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2cr7j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_su2ui"]
+size = Vector2(25, 28)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0dn5q"]
+size = Vector2(25, 25)
+
+[node name="Node2D" type="Node2D" unique_id=1464131484]
+script = ExtResource("1_mkt6s")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1944679588]
+position = Vector2(25, 140)
+script = ExtResource("3_ro8my")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=1348629803]
+shape = SubResource("RectangleShape2D_fa6ko")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D" unique_id=1006219749]
+texture_filter = 1
+texture = ExtResource("4_5jwfy")
+
+[node name="World" type="Node2D" parent="." unique_id=2046674748]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="World" unique_id=1119561725]
+texture_filter = 1
+position = Vector2(0, 2)
+tile_map_data = PackedByteArray("AAAAAAoAAAAAAAAAAAAAAAsAAAAAAAAAAAABAAoAAAAAAAAAAAABAAsAAAAAAAAAAAACAAoAAAAAAAAAAAACAAsAAAAAAAAAAAADAAoAAAAAAAAAAAADAAsAAAAAAAAAAAAEAAoAAAAAAAAAAAAEAAsAAAAAAAAAAAAFAAoAAAAAAAAAAAAFAAsAAAAAAAAAAAAGAAoAAAAAAAAAAAAGAAsAAAAAAAAAAAAHAAoAAAAAAAAAAAAHAAsAAAAAAAAAAAAIAAoAAAAAAAAAAAAIAAsAAAAAAAAAAAAJAAoAAAAAAAAAAAAJAAsAAAAAAAAAAAAKAAoAAAAAAAAAAAAKAAsAAAAAAAAAAAALAAoAAAAAAAAAAAALAAsAAAAAAAAAAAAMAAoAAAAAAAAAAAAMAAsAAAAAAAAAAAANAAoAAAAAAAAAAAANAAsAAAAAAAAAAAAOAAoAAAAAAAAAAAAOAAsAAAAAAAAAAAAPAAoAAAAAAAAAAAAPAAsAAAAAAAAAAAAQAAoAAAAAAAAAAAAQAAsAAAAAAAAAAAARAAoAAAAAAAAAAAARAAsAAAAAAAAAAAASAAoAAAAAAAAAAAASAAsAAAAAAAAAAAATAAoAAAAAAAAAAAATAAsAAAAAAAAAAAAAAAkAAAABAAAAAAABAAkAAAABAAAAAAACAAkAAAABAAAAAAADAAkAAAABAAAAAAAEAAkAAAABAAAAAAAFAAkAAAABAAAAAAAGAAkAAAABAAAAAAAHAAkAAAABAAAAAAAIAAkAAAABAAAAAAAJAAkAAAABAAAAAAAKAAkAAAABAAAAAAALAAkAAAABAAAAAAAMAAkAAAABAAAAAAANAAkAAAABAAAAAAAOAAkAAAABAAAAAAAPAAkAAAABAAAAAAAQAAkAAAABAAAAAAARAAkAAAABAAAAAAASAAkAAAABAAAAAAATAAkAAAABAAAAAAA=")
+tile_set = SubResource("TileSet_fa6ko")
+
+[node name="Area2D" type="StaticBody2D" parent="World" unique_id=1344435878]
+position = Vector2(160, 160)
+scale = Vector2(16, 1.164)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Area2D" unique_id=606046944]
+shape = SubResource("RectangleShape2D_2cr7j")
+
+[node name="Area2D2" type="StaticBody2D" parent="World" unique_id=272914331]
+position = Vector2(-10, 68)
+scale = Vector2(1, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Area2D2" unique_id=1497628713]
+shape = SubResource("RectangleShape2D_2cr7j")
+
+[node name="Area2D3" type="StaticBody2D" parent="World" unique_id=1372200582]
+position = Vector2(330, 100)
+scale = Vector2(1, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Area2D3" unique_id=1268316899]
+shape = SubResource("RectangleShape2D_2cr7j")
+
+[node name="Summoning" type="Area2D" parent="." unique_id=1485836199 node_paths=PackedStringArray("server_manager", "world_node")]
+z_index = -1
+position = Vector2(-108, 0)
+script = ExtResource("4_7q648")
+server_manager = NodePath("..")
+world_node = NodePath("../World")
+
+[node name="Sprite2D" type="Sprite2D" parent="Summoning" unique_id=250342434]
+texture_filter = 1
+position = Vector2(207, 132)
+texture = ExtResource("4_wgsh4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Summoning" unique_id=2093928987]
+position = Vector2(207.5, 133)
+shape = SubResource("RectangleShape2D_su2ui")
+
+[node name="ReadyStone" type="Area2D" parent="." unique_id=1540960629 node_paths=PackedStringArray("player_node", "server_manager", "world_node")]
+z_index = -1
+texture_filter = 1
+position = Vector2(262, 132)
+script = ExtResource("6_fjxc5")
+player_node = NodePath("../CharacterBody2D")
+server_manager = NodePath("..")
+world_node = NodePath("../World")
+
+[node name="Sprite2D" type="Sprite2D" parent="ReadyStone" unique_id=1716554104]
+texture = ExtResource("6_7q648")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ReadyStone" unique_id=1822805182]
+position = Vector2(0, 17)
+shape = SubResource("RectangleShape2D_0dn5q")
+
+[node name="Control" type="Control" parent="." unique_id=1285212907 node_paths=PackedStringArray("server_manager")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("9_c5i0c")
+server_manager = NodePath("..")
+
+[node name="Button" type="Button" parent="Control" unique_id=739278161]
+layout_mode = 0
+offset_top = 1.0
+offset_right = 79.0
+offset_bottom = 27.0
+focus_mode = 0
+theme_override_font_sizes/font_size = 13
+text = "Host"
+
+[node name="PanelContainer" type="PanelContainer" parent="Control" unique_id=1198310397]
+layout_mode = 0
+offset_left = 250.0
+offset_right = 290.0
+offset_bottom = 40.0
+
+[node name="PlayerList" type="VBoxContainer" parent="Control/PanelContainer" unique_id=1240269144]
+layout_mode = 2
+
+[connection signal="pressed" from="Control/Button" to="." method="_on_host_button_pressed"]
